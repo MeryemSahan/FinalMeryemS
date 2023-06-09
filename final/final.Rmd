@@ -1,0 +1,428 @@
+---
+title: "Understanding the Role of Governance in Human Development: An Empirical Analysis of the MENA Region"
+author: 
+  - Şahan, Meryem[^1]
+bibliography: ../bibliography/biblio.bib
+csl: ../csl/apa.csl
+header-includes:
+  - \usepackage{polyglossia}
+  - \setmainlanguage{english}
+  - \usepackage{booktabs}
+  - \usepackage{caption} 
+  - \captionsetup[table]{skip=10pt}
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 4
+    keep_tex: no
+    latex_engine: xelatex
+    number_sections: yes
+    toc: no
+geometry: margin=1in
+link-citations: yes
+urlcolor: blue
+fontsize: 12pt
+biblio-style: apalike
+abstract: |
+  This study presents a comprehensive analysis of the relationship between World Governance Indicators and the Human Development Index (HDI) in the Middle East and North Africa (MENA) region, considering its distinctive socio-political landscape and historical context. Employing correlation and regression analyses, the research elucidates how various governance indicators - Control of Corruption (CC), Government Effectiveness (GE), Rule of Law (RL), Regulatory Quality (RQ), Voice and Accountability (VA), and Political Stability and Lack of Violence (PSV) - interrelate with HDI in the region.The findings underscore that a significant proportion of HDI variations can be attributed to differences in CC, GE, RL, and RQ. VA and PSV, while important, show a relatively less pronounced effect on HDI. 
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- ======================================================================= -->
+<!-- ============================== FOOTNOTES ============================== -->
+<!-- ======================================================================= -->
+[^1]: Student ID, [Github Repo](https://github.com/MeryemSahan/FinalMeryemS.git)
+
+
+# Introduction
+The Middle East and North Africa (MENA) region is a diverse and complex region that has experienced significant socio-economic and political changes in recent decades. In the pursuit of sustainable development and improved living standards, understanding the factors that contribute to human development is of utmost importance for policymakers and researchers in the MENA context. One key area of interest is exploring the relationship between the Human Development Index (HDI) and world governance indicators specific to the MENA region.
+
+Governance indicators play a vital role in assessing the quality of
+governance and institutions within countries. Given the MENA region's
+unique political landscape and varying levels of institutional development, analyzing the correlation between governance indicators and
+the HDI can provide valuable insights into the region's overall human development outcomes.However it is important to mention when it comes to MENA
+By examining these relationships, policymakers can identify areas that require attention and develop targeted strategies to promote inclusive and sustainable development in the MENA countries.
+
+In conclusion, this study contributes to the existing literature on the
+relationship between governance and human development spesifically in the MENA
+region. The reason MENA region has been chosen for this study is to showcase due to  
+By highlighting the importance of governance indicators in
+shaping human development outcomes, this research underscores the
+significance of good governance practices and effective institutions for
+fostering inclusive growth and sustainable development in the MENA
+region.
+
+## Literature Review
+Good governance is widely recognized as a key factor in promoting economic development.
+Countries with effective and transparent governance systems tend to have higher levels of
+investment, trade, and human development, as well as lower levels of inequality Kaufmann
+et al. (2002) Numerous studies have found a positive relationship between good governance
+and GDP per capita. For instance, Acemoglu et al. (2019) found that improvements in
+governance led to significant increases in GDP per capita.
+
+Governance indicators play a vital role in shaping socioeconomic outcomes, as evidenced by studies such as Hall and Jones [@hall1999], Mauro [@mauro1995], and Emara and Jhonsa [@emara2014]. Hall and Jones find a significant relationship between governance indicators and socioeconomic outcomes, highlighting the importance of good governance for development. Similarly, Mauro demonstrates that corruption has adverse effects on domestic and foreign investments, emphasizing the necessity of sound governance practices. In the context of the MENA region, Emara and Jhonsa reveal that despite the low performance of many MENA countries on World Bank Governance Indicators, their per capita income levels are relatively higher, suggesting a fragile standard of living not necessarily based on strong governance. Additionally, Mehanna, Yazbeck, and Sarieddine [@mehanna2010] emphasize that improving governance is the primary challenge facing MENA countries, with voice and accountability, government effectiveness, and control of corruption exerting significant economic impacts. To provide a broader perspective, Davis [@davis2017] examines Sub-Saharan Africa and its governance indices, highlighting their connection to the Human Development Index, non-income HDI, poverty indicators, and economic growth. 
+
+@keser2018 conducted a study on the impacts of governance indicators onhuman development in 33 member and candidate countries of the European Union. Theyfound that good governance, particularly in the areas of government effectiveness, regulatory
+quality, and rule of law.
+
+Comparing World Governance Indicators (WGI) and the Human Development Index (HDI) in the MENA region holds significant importance for understanding the dynamics of governance and human development. While governance indicators provide insights into the quality of governance and institutional performance, the HDI captures multiple dimensions of human development. The MENA region encompasses countries at various levels of development, including both resource-rich nations and those facing socio-economic challenges. These differences in development levels can lead to varying results when analyzing the relationship between WGI and HDI. For instance, oil-rich countries may demonstrate higher per capita income levels[@ross2001],but the sustainability and inclusiveness of their development may be questionable. Additionally, factors such as political stability, voice and accountability, and control of corruption may have distinct impacts on human development across different MENA countries. By comparing WGI and HDI in the MENA region, this study aims to unravel the complexities and shed light on the nuances of governance and human development dynamics, providing valuable insights into policy formulation and development strategies tailored to the specific challenges of each country.
+
+
+# Data
+The study utilizes data from two primary sources: the Human Development
+Index (HDI) and the World Governance Indicators. Human Development Index
+data was taken from United Nations Data portal. World governance
+Indicators data was taken from World Bank.
+
+*The Human Development Index* (HDI) is a composite indicator used to
+measure the overall development and well-being of countries. It was
+introduced by the United Nations Development Programme (UNDP) in 1990 as
+an alternative to traditional economic measures such as Gross Domestic
+Product (GDP) per capita, which were considered limited in capturing the
+multidimensional aspects of development. HDI is a compherensive measure
+of human development, encompassing indicators such as life expectancy,
+education and per capita income.The World Governance Indicators offer insights into various dimensions of governance, including political stability, government effectiveness, rule of law, control of corruption, and regulatory quality and voice and accountability.In this study all the six dimensions of the governance indicators are used. 
+
+1.  *Voice and Accountability* (VA): This dimension assesses the extent to
+    which citizens are able to participate in the political process,
+    exercise their rights, and hold governments accountable for their
+    actions. It captures elements such as freedom of expression, civil
+    liberties, and political rights.
+
+2.  *Political Stability and Lack of* Violence/Terrorism (PSV): This
+    dimension focuses on the likelihood of political instability,
+    violence, and terrorism within a country. It considers factors such
+    as the frequency of demonstrations, terrorism incidents, and
+    perceptions of stability.
+
+3.  *Government Effectiveness* (GE): This dimension evaluates the quality
+    of public services, the efficiency of bureaucracy, and the
+    competence of government institutions. It assesses the ability of
+    governments to formulate and implement policies effectively.
+
+4.  *Regulatory Quality* (RQ): This dimension measures the extent to which
+    regulations are transparent, efficient, and conducive to economic
+    activity. It examines factors such as the ease of doing business,
+    the strength of regulatory frameworks, and the absence of excessive
+    bureaucracy.
+
+5.  *Rule of Law* (RL): This dimension examines the extent to which the
+    legal framework is effective, impartial, and upholds the rights of
+    individuals. It assesses factors such as the independence of the
+    judiciary, the protection of property rights, and the absence of
+    corruption.
+
+6.  *Control of Corruption*(CC):This dimension measures the prevalence of
+    corruption within the public sector. It evaluates factors such as
+    bribery, embezzlement, and nepotism, and assesses the effectiveness
+    of anti-corruption measures.
+
+These dimensions provide a comprehensive framework for understanding and
+evaluating governance dynamics across countries. They help researchers,
+policymakers, and analysts assess the strengths and weaknesses of
+governance systems and identify areas for
+improvement. @@kaufmann2010response
+
+```{r echo=FALSE}
+library(tidyverse)
+library(here)
+library(tidyverse)
+library(here)
+
+wgi_data <- read.csv(here("data/wgi_datax.csv"))
+hdi_data <- read.csv(here("data/Human Development Index_1.csv"))
+
+countries <-c("DZA", "BHR", "EGY", "IRN", "IRQ", "ISR", "JOR", "KWT", "LBN", "LBY", "MAR", "OMN", "PSE", "QAT", "SAU", "SYR", "TUN", "ARE", "YEM")
+years <- 2002:2021
+
+subset_hdi_data <- hdi_data %>% filter(iso3 %in% countries) %>%
+  select(country, matches(paste0("hdi_", years)))
+colnames(subset_hdi_data) <- gsub("hdi_", "", colnames(subset_hdi_data))
+subset_hdi_data <- as.data.frame(subset_hdi_data)
+
+subset_hdi_data<- subset_hdi_data %>%
+  select(-matches("i\\d{4}"), -matches("p\\d{4}"), -matches("diff_p\\d{4}"))
+
+subset_hdi_data <- gather(subset_hdi_data, key = "years", value = "hdi_value", -country)
+
+wgi_data <- wgi_data%>%select(-2, -3)
+colnames(subset_hdi_data) <- c("country","year","HDI")
+
+
+subset_hdi_data <- subset_hdi_data %>%
+  mutate(country = case_when(
+    country == "Egypt" ~ "Egypt, Arab Rep.",
+    country == "Iran (Islamic Republic of)" ~ "Iran, Islamic Rep.",
+    country == "Palestine, State of" ~ "West Bank and Gaza",
+    country == "Yemen" ~ "Yemen, Rep.",
+    TRUE ~ country
+  ))
+
+merged_data <- merge(wgi_data,subset_hdi_data,by = c("country","year"))
+
+
+colnames(merged_data) <- c("country","year","RQ","VA","PSV","GE","CC","RL","HDI")
+
+# Check for missing values in the entire dataset
+missing_values <- is.na(merged_data)
+View(missing_values)
+# Count the number of missing values in each variable
+missing_count <- colSums(missing_values)
+
+merged_data <- merged_data[merged_data$country != "Lebanon", ]
+
+merged_data <- merged_data[merged_data$country != "West Bank and Gaza", ]
+
+
+
+
+```
+
+Note that code options are edited in some of the code chunks in the Rmd file.
+
+```{r, echo=FALSE, results='asis'}
+library(xtable) 
+library(summarytools)
+summary_stats <- merged_data %>%
+  select(RQ, RL, VA, PSV, GE, CC, HDI) %>%
+  descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE)
+
+# Calculate the number of columns in the data frame
+num_cols <- ncol(summary_stats)
+
+# Generate the alignment vector
+align <- c("l", rep("c", num_cols))
+
+print(xtable(summary_stats, caption = "Summary Statistics", label = "tab:summary", align = align), 
+      booktabs = TRUE, comment = FALSE, caption.placement = "top")
+
+
+```
+
+
+
+```{r echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+average_datag <- aggregate(cbind(RQ, RL, VA, PSV, GE, CC, HDI) ~ year, data = merged_data, FUN = mean)
+ggplot(average_datag, aes(x = year)) +
+  geom_line(aes(y = RQ, color = "RQ")) +
+  geom_line(aes(y = RL, color = "RL")) +
+  geom_line(aes(y = VA, color = "VA")) +
+  geom_line(aes(y = PSV, color = "PSV")) +
+  geom_line(aes(y = GE, color = "GE")) +
+  geom_line(aes(y = CC, color = "CC")) +
+labs(x = "Year", y = "Indicator Value", title = "World  Governance Indicators in MENA Region") +
+  scale_color_manual(values = c(RQ = "red", RL = "blue", VA = "green", PSV = "orange", GE = "purple", CC = "yellow"), 
+                     labels = c(RQ = "RQ", RL = "RL", VA = "VA", PSV = "PSV", GE = "GE", CC = "CC")) +
+theme_minimal()+
+ labs(caption = "Figure 1")
+
+
+
+```
+
+```{r echo=FALSE}
+library(ggplot2)
+ggplot(average_datag, aes(x = year, y = HDI)) +
+  geom_line(color = "black") +
+  labs(x = "Year", y = "HDI", title = "HDI in MENA") +
+  theme_minimal() +
+  labs(caption = "Figure 2")
+
+```
+
+The Figure 1 and Figure 2 present the average values of World Governance Indicators (RQ, RL, VA, PSV, GE, CC) and the Human Development Index (HDI) in the MENA region over time. The average values provide insights into the overall trends and variations in governance indicators in the region. 
+Additionally, the HDI values show a gradual increase, excluding 2012-2015 indicating improvements in human development. These findings highlight the importance of monitoring governance indicators and their impact on human development in the MENA region."
+
+The low scores for VA suggest challenges related to citizen participation, civil liberties, and the ability of individuals and groups to hold their governments accountable. The MENA region has experienced varying levels of political repression, limited freedom of expression, and restrictions on civil society organizations, which can contribute to the lower VA scores. Factors such as authoritarian governance, lack of political reforms, and limited space for public discourse and activism may contribute to this observation.
+
+Regarding the declining trend in PSV, it indicates a deteriorating political stability and an increase in violence within the region. The MENA region has faced numerous socio-political challenges, including conflicts, civil unrest, and political transitions. These factors can impact the stability of institutions, increase social tensions, and potentially lead to a decline in political stability over time.
+
+It is important to consider the MENA region's diverse socio-political landscape, which includes countries with different levels of development, governance structures, and socio-economic dynamics. Conflicts, regional tensions, and resource disparities @cammet, such as those related to oil wealth, can influence governance dynamics and contribute to the observed variations in VA and the declining trend in PSV.
+
+```{r echo = FALSE}
+
+country_averages <- aggregate(. ~ country, data = merged_data, FUN = mean, na.rm = TRUE)
+
+min_values <- sapply(country_averages[, -1], min, na.rm = TRUE)
+max_values <- sapply(country_averages[, -1], max, na.rm = TRUE)
+min_countries <- sapply(country_averages[, -1], function(x) country_averages$country[which.min(x)])
+max_countries <- sapply(country_averages[, -1], function(x) country_averages$country[which.max(x)])
+
+# Create a data frame to store the results
+summary_df <- data.frame(Variable = names(min_values),
+                         Minimum = min_values,
+                         Minimum_Country = min_countries,
+                         Maximum = max_values,
+                         Maximum_Country = max_countries)
+
+
+
+```
+
+
+
+# Methods and Data Analysis
+In this study, the primary research objective is to examine the relationship between the Human Development Index (HDI) and various governance indicators in the MENA region. To initiate my investigation into the relationship between the HDI and governance indicators in the MENA region, I first conducted a correlation analysis. This initial step aimed to explore the associations between HDI and specific governance indicatoras. By calculating the correlation matrix and visualizing it using a correlation plot, I sought to gain insights into the strength and direction of the relationships between these variables. Additionally, I rescaled the World Governance Indicators (WGIs) to a common range of 0 to 1 to facilitate direct comparison with the HDI values.
+
+The correlation analysis allowed me to identify any preliminary patterns or trends that could inform subsequent analyses and provide initial indications of the interdependencies between HDI and the governance indicators. Building upon these findings, I proceeded with further investigations using regression models and fixed/random effects analyses to explore the relationship between HDI and governance indicators in the MENA region. My research questions focused on examining the overall association between HDI and each governance indicator using linear regression analysis. This approach allowed me to assess the direction and strength of the relationship between HDI and individual governance indicators while considering country-specific factors that may influence this relationship.
+
+To address the presence of country-specific factors and unobserved heterogeneity, I employed a fixed effects model that accounted for variations across countries and controlled for time-invariant country-specific effects. Furthermore, I utilized a random effects model to explore both within-country and between-country variations in the relationship, taking into account time-invariant and time-varying factors contributing to the association between HDI and governance indicators. Additionally, as a baseline assessment, I applied pooled OLS regression, disregarding individual-specific effects.
+
+It is important to note that during my analysis, I rescaled the WGI values to a range of 0 to 1 to facilitate direct comparability with the HDI values, which already ranged from 0 to 1. This rescaling allowed me to examine the relative impact of the governance indicators on human development in a consistent manner, regardless of their original scale.
+
+By utilizing these multiple analysis methods and accounting for the adjusted WGI values, my study aims to comprehensively examine the nuanced relationship between HDI and governance indicators in the MENA region. This approach provides a more comprehensive understanding of the interplay between governance and human development, considering both country-specific factors and the rescaled nature of the WGI values.
+
+
+```{r echo = FALSE}
+
+library(plm)
+library(dplyr)
+
+min_values <- c(GE = -2.5, PSV = -2.5, CC = -2.5, RQ = -2.5, RL = -2.5, VA = -2.5)
+max_values <- c(GE = 2.5, PSV = 2.5, CC = 2.5, RQ = 2.5, RL = 2.5, VA = 2.5)
+
+merged_data$Adjusted_GE <- (merged_data$GE - min_values["GE"]) / (max_values["GE"] - min_values["GE"])
+merged_data$Adjusted_PSV <- (merged_data$PSV - min_values["PSV"]) / (max_values["PSV"] - min_values["PSV"])
+merged_data$Adjusted_CC <- (merged_data$CC - min_values["CC"]) / (max_values["CC"] - min_values["CC"])
+merged_data$Adjusted_RQ <- (merged_data$RQ - min_values["RQ"]) / (max_values["RQ"] - min_values["RQ"])
+merged_data$Adjusted_RL <- (merged_data$RL - min_values["RL"]) / (max_values["RL"] - min_values["RL"])
+merged_data$Adjusted_VA <- (merged_data$VA - min_values["VA"]) / (max_values["VA"] - min_values["VA"])
+
+
+adjustedwgi_data<- merged_data[, c("country", "year", "Adjusted_RL", "Adjusted_VA", "Adjusted_PSV", "Adjusted_RQ", "Adjusted_GE", "Adjusted_CC","HDI")]
+
+
+colnames(adjustedwgi_data) <- c("country","year","RL","VA","PSV","RQ","GE","CC","HDI")
+
+```
+
+
+
+```{r echo=FALSE, results='asis'}
+library(corrplot)
+library(xtable)
+
+variables <- c("RL","VA","PSV","RQ","GE","CC","HDI")
+
+invisible({
+  # Calculate the correlation matrix
+  cor_matrix <- cor(adjustedwgi_data[, variables])
+
+  # Create the correlation plot
+  corrplot(cor_matrix, method = "circle", tl.col = "darkblue", tl.srt = 45)
+})
+
+```
+
+The correlation table reveals the associations between the Human Development Index (HDI) and various governance indicators in the MENA region. The values in the table range from 0 to 1, representing the strength of the correlation. Dark blue color in the correlation plot indicates a higher degree of correlation.
+
+The correlation analysis suggests that HDI exhibits a positive correlation with Regulatory Quality (RQ), Control of Corruption (CC), Government Effectiveness (GE), and Rule of Law (RL). These indicators have correlation coefficients ranging from 0.5546 to 0.9463, indicating a moderate to strong positive association with HDI. This implies that countries with higher levels of regulatory quality, control of corruption, government effectiveness, and adherence to the rule of law tend to have higher human development levels.
+
+On the other hand, HDI shows a weaker positive correlation with Voice & Accountability (VA) and Political Stability and Lack of Violence (PSV). The correlation coefficients for these indicators range from 0.1492 to 0.5559, suggesting a relatively weaker relationship with HDI. This implies that the level of voice and accountability and political stability may have a less consistent impact on human development in the MENA region.
+
+## Random and Fixed Effects Model
+$$
+\text{HDI}_x = \theta_{0x} + \theta_1 \text{CC}_{xy} + \theta_2 \text{GE}_{xy} + \theta_3 \text{PV}_{xy} + \theta_4 \text{RQ}_{xy} + \theta_5 \text{RL}_{xy} + \theta_6 \text{VA}_{xy} + \epsilon_x + u_{xy}
+$$
+
+$$
+\text{HDI}_x = \alpha_{0x} + \alpha_1 \text{CC}_{xy} + \alpha_2 \text{GE}_{xy} + \alpha_3 \text{PSV}_{xy} + \alpha_4 \text{lnRQ}_{xy} + \alpha_5 \text{lnRL}_{xy} + \alpha_6 \text{lnVA}_{xy} + u_{xy}
+$$
+In this equations x represents country duringy y for that spesific variable reffered.
+
+
+
+```{r echo=FALSE, results='asis'}
+
+library(plm)
+library(stargazer)
+random_model <- plm(HDI ~ CC + GE + PSV + RL + RQ + VA,
+                    data = adjustedwgi_data, model="random")
+
+# Create a table
+random_table <- stargazer(random_model, type = "latex", header = FALSE, single.row = TRUE)
+
+```
+  In Table 2 the results of regression model is showed. In the regression model results, the 'Government Effectiveness' and 'Rule of Law' indicators show a positive and significant relationship with HDI, implying that improvements in these areas are associated with an enhancement in human development. Specifically, a unit increase in 'Government Effectiveness' is associated with a 0.358 increase in HDI, and a unit increase in 'Rule of Law' correlates with a 0.222 increase in HDI, holding all other factors constant. On the contrary, 'Control of Corruption', 'Political Stability and Lack of Violence', and 'Regulatory Quality' indicators surprisingly show a significant but negative relationship with HDI. Particularly, a unit increase in these governance indicators corresponds to a decrease in HDI by 0.200, 0.055, and 0.122, respectively. 
+   This counter-intuitive finding suggests that despite improvements in these areas, the HDI seems to decrease.Lastly, the 'Voice & Accountability' indicator does not significantly affect the HDI, implying that the variations in HDI may not be effectively captured by this indicator alone. These findings provide a nuanced understanding of the interplay between governance indicators and human development in the MENA region.
+
+
+```{r echo=FALSE, results='asis'}
+library(plm)
+library(stargazer)
+# Fixed effects model
+fixed_model <- plm(HDI ~ CC + GE + PSV +RL + RQ + VA,
+                   data = adjustedwgi_data, model = "within", effect = "individual")
+fixed_model <- stargazer(fixed_model, type = "latex", header = FALSE, single.row = TRUE)
+
+```
+
+In the Table 3, In the fixed effects model results for the MENA region, 'Government Effectiveness' (GE) and 'Rule of Law' (RL) indicators maintain their positive and statistically significant relationship with the Human Development Index (HDI). Specifically, a one-unit increase in 'Government Effectiveness' corresponds to a 0.353 increase in the HDI, while a one-unit increase in the 'Rule of Law' is associated with a 0.202 increase in the HDI, ceteris paribus. This underscores that effective governance and robust rule of law could have beneficial impacts on human development within each country in the MENA region.
+
+On the other hand, 'Control of Corruption' (CC), 'Political Stability and Lack of Violence' (PSV), and 'Regulatory Quality' (RQ) indicators all show a negative association with the HDI, which continues to be statistically significant. A one-unit increase in these governance indicators leads to a decrease in the HDI by 0.223, 0.047, and 0.128, respectively. These findings suggest that despite their intrinsic values, improvements in these governance aspects do not seem to enhance human development within each individual country in the MENA region.
+
+Finally, the 'Voice & Accountability' (VA) indicator maintains its non-significant effect on the HDI, suggesting that the variations in HDI may not be substantially influenced by this indicator alone within each individual country.
+
+
+```{r echo=FALSE, results='asis'}
+library(plm)
+library(stargazer)
+ols_model <- plm(HDI ~ CC + GE + PSV + RL + RQ + VA, data = adjustedwgi_data, model = "pooling")
+ols_table <- stargazer(ols_model, type = "latex", header = FALSE, single.row = TRUE )
+```
+
+In the Table 4 showing, the pooled OLS model, 
+In the Pooled OLS model, 'Government Effectiveness' (GE) and 'Rule of Law' (RL) indicators again show a significant and positive relationship with the Human Development Index (HDI). Specifically, for each one-unit increase in 'Government Effectiveness', the HDI increases by 0.528, holding all else constant. Similarly, a one-unit increase in the 'Rule of Law' corresponds to a 0.390 increase in HDI, all other factors being equal. These findings further underscore the importance of effective government and a strong rule of law in enhancing human development across all countries in the MENA region, as was seen in previous models.
+
+'Political Stability and Lack of Violence' (PSV), 'Regulatory Quality' (RQ), and 'Voice & Accountability' (VA) indicators all show a significant negative association with the HDI in this model. For each one-unit increase in these governance indicators, the HDI decreases by 0.080, 0.361, and 0.139, respectively. These results suggest that while these governance factors are important in their own right, they may not necessarily translate into immediate improvements in human development in the MENA region when considering all countries together.
+
+The 'Control of Corruption' (CC) indicator, interestingly, shows a non-significant effect on the HDI in this model, suggesting that, across all countries in the MENA region, the variations in HDI may not be substantially influenced by this indicator alone.
+
+This model provides a baseline assessment of the relationships between governance indicators and HDI, assuming homogeneity across countries and time. Comparing this model with the fixed effects and random effects models could offer further insights into how these relationships may differ within and between countries in the MENA region.
+
+
+
+# Conclusion
+The analysis conducted on the relationship between the World Governance Indicators and the Human Development Index (HDI) in the MENA region
+holds significant relevance considering the region's historical and geopolitical context, including conflicts and political upheavals.
+
+
+The correlation analysis suggests that HDI exhibits a positive correlation with Regulatory Quality (RQ), Control of Corruption (CC), Government Effectiveness (GE), and Rule of Law (RL). These indicators have correlation coefficients ranging from 0.5546 to 0.9463, indicating a moderate to strong positive association with HDI. The regression analysis further confirms these relationships, with R-squared values ranging from 0.26 to 0.83. This suggests that the variations in HDI can be explained by approximately 26% to 83% of the variations in these governance indicators. This implies that countries with higher levels of regulatory quality, control of corruption, government effectiveness, and adherence to the rule of law tend to have higher human development levels, and these indicators explain a significant portion of the variations in HDI.
+
+The fixed effects regression results reinforce the findings from the previous analyses, indicating positive associations between HDI and regulatory quality (RQ), control of corruption (CC), government effectiveness (GE), and rule of law (RL). The random effects regression also confirms these relationships. Both models demonstrate the importance of these governance indicators in explaining variations in HDI across the MENA region.
+
+These regression analyses provide a more comprehensive understanding of the relationship between HDI and the governance indicators in the MENA region, accounting for country-specific factors and capturing both within-country and between-country variations. The findings emphasize the significance of regulatory quality, control of corruption, government effectiveness, and adherence to the rule of law in driving human development outcomes. However, it is important to acknowledge that additional factors and complexities, such as conflicts and the presence of oil-rich countries, may influence the relationship between HDI and governance indicators in the MENA region.
+
+In conclusion, this study has revealed significant insights into the relationship between governance indicators and the Human Development Index (HDI) in the MENA region. The correlation and regression analyses demonstrated that the indicators of Regulatory Quality (RQ), Control of Corruption (CC), Government Effectiveness (GE), Rule of Law (RL), Political Stability and Lack of Violence (PSV), and Voice & Accountability (VA) interact with the HDI in complex ways, reflecting the unique regional historical, political, and socio-economic contexts.
+
+The fixed effects model (Table 2) revealed that approximately 27.3% (R^2 = 0.273) of the variability in HDI could be accounted for by the governance indicators. In this model, CC, GE, PSV, RL, and RQ had significant impacts on HDI, but their influence was negative, except for GE.
+
+In contrast, the random effects model (Table 3) accounted for slightly less variability in HDI, with an R^2 value of 0.261. The direction of influence of the variables was consistent with the fixed effects model.
+
+However, the pooled OLS regression model (Table 4) painted a more nuanced picture. This model accounted for a significant portion of HDI's variability (R^2 = 0.669), suggesting a robust relationship between governance indicators and HDI. In this model, GE and RL positively influenced HDI, while PSV, RQ, and VA negatively influenced it. Interestingly, CC was not a significant predictor in this model.
+
+This variability in outcomes across models underscores the complex, multifaceted nature of the relationship between governance and human development. However, the consistency in the significance and direction of influence of some variables, like GE and RL, indicates that government effectiveness and adherence to the rule of law play critical roles in driving human development outcomes.
+
+These findings highlight the crucial need for governance reforms in the MENA region, particularly in enhancing government effectiveness, reducing corruption, and strengthening the rule of law. Understanding and addressing these governance challenges are vital for advancing human development in the region and building a more stable, prosperous future.
+
+This analysis offers valuable insights for policymakers and development practitioners working in the MENA region. It underscores the importance of adopting a holistic approach to human development that goes beyond economic growth to also consider governance reforms and the restoration of political stability.
+
+As we strive towards a more sustainable and inclusive future, recognizing and addressing the unique governance challenges faced by the MENA region will be key. This study contributes to this effort by illuminating the complex interplay between governance and human development in the region.
+
+Despite the region-specific nature of this study, its findings hold broad relevance and can inform efforts to enhance governance and human development in other regions facing similar challenges. Future research can extend this work by exploring these relationships in different regional contexts and investigating other potential influences on human development.
+
+In sum, the analysis of the relationship between World Governance Indicators and the Human Development Index in the MENA region provides valuable insights that deeply resonate with the region's historical and geopolitical context. By recognizing the importance of good governance in post-conflict settings and addressing specific governance challenges, policymakers can work towards sustainable human development and a more prosperous future for the people of the MENA region.
+
+
+
+
+\newpage
+# References {#references}
+<div id="refs"></div>
+
